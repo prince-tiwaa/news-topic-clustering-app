@@ -772,11 +772,13 @@ elif "EDA" in page:
             textposition="outside",
             textfont=dict(size=10, color="#94a3b8"),
         ))
+        theme = plotly_theme()
+        theme["yaxis"].update(autorange="reversed", tickfont=dict(size=10))
+
         fig_clusters.update_layout(
-            **plotly_theme(),
+            **theme,
             title=dict(text="🏷️ Articles per Cluster", font=dict(size=14, color="#e2e8f0")),
             height=520,
-            yaxis=dict(autorange="reversed", tickfont=dict(size=10)),
         )
         st.plotly_chart(fig_clusters, use_container_width=True)
 
@@ -790,12 +792,15 @@ elif "EDA" in page:
             color=list(source_counts.values()),
             color_continuous_scale=["#1e3a5f", "#3b82f6", "#06b6d4"],
         )
+        theme = plotly_theme()
+        theme["yaxis"].update(autorange="reversed", tickfont=dict(size=10))
+
         fig_src.update_layout(
-            **plotly_theme(),
-            title_font_size=14, title_font_color="#e2e8f0",
+            **theme,
+            title_font_size=14,
+            title_font_color="#e2e8f0",
             coloraxis_showscale=False,
             height=360,
-            yaxis=dict(autorange="reversed", tickfont=dict(size=10)),
         )
         st.plotly_chart(fig_src, use_container_width=True)
 
@@ -993,11 +998,13 @@ elif "Cluster Insights" in page:
             textposition="outside",
             textfont=dict(size=10, color="#94a3b8"),
         ))
+        theme = plotly_theme()
+        theme["yaxis"].update(autorange="reversed", tickfont=dict(size=11))
+
         fig_kw.update_layout(
-            **plotly_theme(),
+            **theme,
             title=dict(text=f"TF-IDF Scores — Top Keywords", font=dict(size=13, color="#e2e8f0")),
             height=320,
-            yaxis=dict(autorange="reversed", tickfont=dict(size=11)),
         )
         st.plotly_chart(fig_kw, use_container_width=True)
 
